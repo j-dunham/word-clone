@@ -9,7 +9,20 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  return <>Put a game here!</>;
+  const [guess, setGuess] = React.useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log({ guess: guess.toUpperCase() });
+    setGuess('');
+  }
+
+  return (
+    <form className="guess-input-wrapper" onSubmit={(e) => handleSubmit(e)}>
+      <label htmlFor="guess-input">Enter guess:</label>
+      <input id="guess-input" type="text" value={guess} onChange={(e) => setGuess(e.target.value)} pattern="[a-zA-z]{5}" title='5 letter word' />
+    </form>
+  )
 }
 
 export default Game;
