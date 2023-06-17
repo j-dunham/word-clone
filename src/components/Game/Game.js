@@ -2,7 +2,7 @@ import React from 'react';
 
 import { sample } from '../../utils';
 import { WORDS } from '../../data';
-import GuessResult from './GuessResult';
+import GuessResult from './GuessResults';
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -20,9 +20,11 @@ function Game() {
     setGuesses([...guesses, guess.toUpperCase()]);
   }
 
+  const answer = 'HELLO';
+
   return (
     <>
-      <GuessResult guesses={guesses} />
+      <GuessResult guesses={guesses} answer={answer}/>
       <form className="guess-input-wrapper" onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor="guess-input">Enter guess:</label>
         <input id="guess-input" type="text" value={guess} onChange={(e) => setGuess(e.target.value)} pattern="[a-zA-z]{5}" title='5 letter word' />
